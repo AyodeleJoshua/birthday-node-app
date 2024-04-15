@@ -10,6 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/v1", apiRoutes);
 
+// Unhandled error handler
+app.use((req, res) => {
+  res.status(404).json({
+    message: "Not found",
+  });
+});
 const port = process.env.PORT || 8080;
 
 sequelize
